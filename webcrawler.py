@@ -12,12 +12,14 @@ url_hc = 'https://hotcopper.com.au/announcements/asx/'
 url_mi = 'https://www.marketindex.com.au/asx-listed-companies'
 today = date.today().strftime('%Y-%m-%d')
 
-req = Request(url=url_hc, headers={'user-agent': 'my-scraper/0.1'})
-response = urlopen(req)
 
-html = BeautifulSoup(response, 'lxml')
+### scraping hotcopper website ----
+req_hc = Request(url=url_hc, headers={'user-agent': 'my-scraper/0.1'})
+response_hc = urlopen(req_hc)
 
-announcements_table = html.find_all(class_ = "table is-fullwidth is-hidden-touch")
+html_hc = BeautifulSoup(response_hc, 'lxml')
+
+announcements_table = html_hc.find_all(class_ = "table is-fullwidth is-hidden-touch")
 
 stock_pill_td_list = announcements_table[0].findAll('td', {'class': 'stock-pill-td'})
 stock_td_list = announcements_table[0].findAll('td', {'class': 'stock-td'})
@@ -58,3 +60,11 @@ for i in range(0, len(stock_ts_td_list), 2):
 
 d_hc = {'ticker': ticker_code_list, 'announcement': announcement_list, 'price_sensitive': price_sensitive_list, 'date_time': announcement_time_list}
 df_hc = pd.DataFrame(d_hc)
+
+### scraping market index website ----
+req_mi = Request(url=url_mi, headers={'user-agent': 'my-scraper/0.1'})
+response_mi = urlopen(req_mi)
+
+html_mi = BeautifulSoup(response_mi, 'html.parser')
+
+price_div = html_mi.find('div', {'class': 'mt-4'})
