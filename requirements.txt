@@ -16,6 +16,7 @@ pandoc==1.0.2
 pandocfilters==1.4.2
 Pillow==8.2.0
 plotly==4.5.4
+psycopg2-binary-2.9.3
 pylint==2.12.2
 PyYAML==5.3.1
 regex==2020.11.13
@@ -31,6 +32,7 @@ smart-open==5.0.0
 soupsieve==2.2.1
 spacy==3.0.5
 spacy-legacy==3.0.2
+sqlalchemy==1.4.36
 tornado==6.1
 tqdm==4.59.0
 urllib3==1.25.9
