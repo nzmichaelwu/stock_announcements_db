@@ -12,10 +12,3 @@ chart_output:
   WIDTH: 800
   HEIGHT: 600
   SCALE: 1.2
-
-urls:
-  hotcopper: https://hotcopper.com.au/announcements/asx/
-  marketindex: https://www.marketindex.com.au/asx-listed-companies
-
-db:
-  url: postgresql://hrqoykhyefhfvw:b2ee2bd9d15561cb1e7c30817b58c4697a77935984e9fede33b8da0ce992340d@ec2-54-211-255-161.compute-1.amazonaws.com:5432/du42ugu7n5fne
