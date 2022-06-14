@@ -2,6 +2,8 @@
 
 set -e
 
+cron && tail -f /var/log/cron.log
+
 # echo "Executing hotcopper_scrape.py..."
 # python /opt/db/hotcopper_scrape.py
 # echo "hotcopper_scrape.py completed..."

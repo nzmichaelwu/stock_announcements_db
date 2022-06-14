@@ -18,13 +18,12 @@ function run_local() {
     local local_dir="$(pwd)"
 
     # remove_container "stock_db"
-    docker run --rm \
+    docker run --rm -d -t \
         --name stock_db \
         -e ENV=DEBUG \
-        -p 4445:4444 \
+        -p 4444:4444 \
         ${IID}
         # -p 22:22 \
-        
 
     echo "Started container listening to ports 4445"
 }
