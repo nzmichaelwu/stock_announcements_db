@@ -6,9 +6,8 @@ import pandas as pd
 import regex as re
 
 from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.firefox.service import Service
+from selenium.webdriver.firefox.options import Options
 
 
 ### function to scrape hotcopper website ----
@@ -66,17 +65,12 @@ def hotcopper_scraper(base_url, run_date):
 def marketindex_scraper(base_url, run_ts):
 
   # Setup chrome options
-  chrome_options = Options()
-  chrome_options.add_argument("--headless")
-  chrome_options.add_argument("--no-sandbox")
-  chrome_options.add_argument("--disable-dev-shm-usage")
-  chrome_prefs = {}
-  chrome_options.experimental_options["prefs"] = chrome_prefs
-  chrome_prefs["profile.default_content_settings"] = {"images": 2}
+  firefox_options = Options()
+  firefox_options.headless = True
 
   # Set path to chromedriver
-  webdriver_service = Service("/usr/local/bin/chromedriver")
-  driver = webdriver.Chrome(service=webdriver_service, options=chrome_options)
+  webdriver_service = Service("/usr/local/bin/geckodriver")
+  driver = webdriver.Firefox(service=webdriver_service, options=firefox_options)
 
   driver.get(base_url)
   time.sleep(1)

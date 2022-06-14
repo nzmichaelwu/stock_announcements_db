@@ -3,7 +3,7 @@ from src.util import DotDict
 
 from sqlalchemy import create_engine
 
-cfg = DotDict(yaml.safe_load(open('db/config_db.yml')))
+cfg = DotDict(yaml.safe_load(open('/opt/db/config_db.yml')))
 # cfg = DotDict(yaml.safe_load(open('config_db.yml')))
 
 # Get required database params
