@@ -4,14 +4,4 @@ set -e
 
 cron && tail -f /var/log/cron.log
 
-# echo "Executing hotcopper_scrape.py..."
-# python /opt/db/hotcopper_scrape.py
-# echo "hotcopper_scrape.py completed..."
-
-# sleep 2
-
-# echo "Executing marketindex_scrape.py..."
-# python /opt/db/marketindex_scrape.py
-# echo "marketindex.py completed..."
-
-# echo "Scraping completed."
+/usr/bin/supervisord -c /etc/supervisor/supervisord.conf

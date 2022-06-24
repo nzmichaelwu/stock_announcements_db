@@ -21,11 +21,13 @@ function run_local() {
     docker run --rm -d -t \
         --name stock_db \
         -e ENV=DEBUG \
-        -p 4444:4444 \
+        -p 4446:4444 \
+        -p 8000:8000 \
+        -p 8022:22 \
         ${IID}
         # -p 22:22 \
 
-    echo "Started container listening to ports 4445"
+    echo "Started container listening to ports 5500"
 }
 
 function for_manifest() {

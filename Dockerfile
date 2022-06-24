@@ -91,9 +91,13 @@ RUN crontab /etc/cron.d/stock-cron
 # Create the log file to be able to run tail
 RUN touch /var/log/cron.log
 
-WORKDIR /opt
+# Create a folder called logs for all app logs
+RUN mkdir -p /var/log/stockannouncementsdb
+RUN mkdir -p /var/log/supervisor
 
-EXPOSE 22 4000 4444 9515
+# WORKDIR /opt
+
+EXPOSE 22 4000 4444 9515 8000
 
 # Run app
 Entrypoint ["/init.sh"]

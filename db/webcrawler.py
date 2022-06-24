@@ -35,7 +35,7 @@ def hotcopper_scraper(base_url, run_date):
   announcement_list = []
   for i in range(0, len(stock_td_list)):
     tag_str = stock_td_list[i].find('a').prettify()
-    announcement = re.search('  [\da-z A-Z]{1,50}', tag_str).group(0).strip()
+    announcement = re.search("  [$.\da-z A-Z.,'/&:-]{1,50}", tag_str).group(0).strip()
     announcement_list.append(announcement)
 
   # extract price sensitive
