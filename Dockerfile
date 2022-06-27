@@ -40,7 +40,7 @@ RUN apt-get update && apt-get install -y \
   # Config ssh
   && mkdir -p /var/run/sshd /var/log/sshd var/log/lastlog/ \
   && sed -i 's/#PasswordAuthentication.*/PasswordAuthentication no/' /etc/ssh/sshd_config \
-  && sed -i 's/#ChallengeResponseAuthentication.*/ChallengeResponseAuthentication no/' /etc/ssh/sshd_config  
+  && sed -i 's/#ChallengeResponseAuthentication.*/ChallengeResponseAuthentication no/' /etc/ssh/sshd_config
 
 COPY skel/post-install/etc/authorized_keys /root/.ssh/authorized_keys
 
