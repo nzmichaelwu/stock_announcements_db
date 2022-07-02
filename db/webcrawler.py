@@ -1,5 +1,5 @@
 # import libraries
-from urllib.request import urlopen, Request
+import requests
 from bs4 import BeautifulSoup
 import time
 import pandas as pd
@@ -12,8 +12,7 @@ from selenium.webdriver.firefox.options import Options
 
 ### function to scrape hotcopper website ----
 def hotcopper_scraper(base_url, run_date):
-  req_hc = Request(url=base_url, headers={'user-agent': 'my-scraper/0.1'})
-  response_hc = urlopen(req_hc)
+  response_hc = requests.get(base_url, headers={'User-Agent': 'Mozilla/5.0'}).content
 
   html_hc = BeautifulSoup(response_hc, 'lxml')
 
