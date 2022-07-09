@@ -1,0 +1,10 @@
+urls:
+  hotcopper: https://hotcopper.com.au/announcements/asx/
+  marketindex: https://www.marketindex.com.au/asx-listed-companies
+
+db:
+  user: root
+  password: Allblackscup_01
+  host: stock-rds-db.ck01jddttrnr.ap-southeast-2.rds.amazonaws.com
+  port: 5432
+  name: stock_announcement_db
