@@ -4,11 +4,11 @@
 * 8-15 * * 1-5 /usr/local/bin/python /opt/db/hotcopper_scrape.py >> /var/log/cron.log 2>&1
 * 8-15 * * 1-5 echo "hotcopper_scrape.py completed..." >> /var/log/cron.log 2>&1
 
-# hotcopper - weekday after 4pm once before midnight (11:30pm)
-30 23 * * 1-5 date >> /var/log/cron.log 2>&1
-30 23 * * 1-5 echo "Executing hotcopper_scrape.py..." >> /var/log/cron.log 2>&1
-30 23 * * 1-5 /usr/local/bin/python /opt/db/hotcopper_scrape.py >> /var/log/cron.log 2>&1
-30 23 * * 1-5 echo "hotcopper_scrape.py completed..." >> /var/log/cron.log 2>&1
+# hotcopper - Monday to Thursday after 4pm once before midnight (11:30pm)
+30 23 * * 1-4 date >> /var/log/cron.log 2>&1
+30 23 * * 1-4 echo "Executing hotcopper_scrape.py..." >> /var/log/cron.log 2>&1
+30 23 * * 1-4 /usr/local/bin/python /opt/db/hotcopper_scrape.py >> /var/log/cron.log 2>&1
+30 23 * * 1-4 echo "hotcopper_scrape.py completed..." >> /var/log/cron.log 2>&1
 
 # market_index - weekday at 11:50pm
 50 23 * * 1-5 date >> /var/log/cron.log 2>&1
