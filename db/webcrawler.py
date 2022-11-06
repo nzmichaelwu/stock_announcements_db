@@ -107,3 +107,108 @@ def marketindex_scraper(base_url, run_ts):
   df_market_cap = pd.DataFrame(market_cap_data)
 
   return df_market_cap
+
+
+### function to scrape AFR website (front page headline and street talk section) ----
+def afr_scraper(homepage_url, street_talk_url, run_ts):
+  # extract homepage headlines
+  response_afr = requests.get(homepage_url, headers={'User-Agent': 'Mozilla/5.0'}).content
+  html_afr = BeautifulSoup(response_afr, 'lxml')
+
+  main_contents = html_afr.find_all('h3')
+
+  headlines = []
+
+  for content in main_contents:
+    headlines.append(content.text.strip())
+
+  d_headlines = {'headline': headlines, 'extract_ts': run_ts}
+  df_afr_headlines = pd.DataFrame(d_headlines)
+
+  # extract street talk headlines
+  response_street_talk = requests.get(street_talk_url, headers={'User-Agent': 'Mozilla/5.0'}).content
+  html_street_talk = BeautifulSoup(response_street_talk, 'lxml')
+
+  street_talk_table = html_street_talk.find_all(class_ = '_3lKkv')
+  street_talk_list = street_talk_table[0].findAll('div', {'class': '_2slqK _3AC43'})
+
+  street_talk_headlines_list = []
+  street_talk_summary_list = []
+  for i in range(0, len(street_talk_list)):
+    # headlines
+    tag_str_headline = street_talk_list[i].find('a', class_='_235GT')
+    street_talk_headline = tag_str_headline.text
+    street_talk_headlines_list.append(street_talk_headline)
+    # summary
+    tag_str_summary = street_talk_list[i].find('p', class_='wI-Bh')
+    street_talk_summary = tag_str_summary.text.replace('\xa0','')
+    street_talk_summary_list.append(street_talk_summary)
+
+  d_street_talk = {'headline': street_talk_headlines_list, 'summary': street_talk_summary_list, 'extract_ts': run_ts}
+  df_afr_street_talk = pd.DataFrame(d_street_talk)
+
+  return df_afr_headlines, df_afr_street_talk
+
+
+'''
+  Function to scrape DataRoom and Trading Day, as their format is the same
+'''
+def australian_section_scrapper(url, run_ts):
+  response = requests.get(url, headers={'User-Agent': 'Mozilla/5.0'}).content
+  html = BeautifulSoup(response, 'lxml')
+
+  main_content = html.find("div", {"id": "group_3_col-471"})
+  story_blocks = main_content.find_all(class_ = "story-block")
+
+  story_category_list = []
+  story_heading_list = []
+  story_summary_list = []
+
+  for i in range(0, len(story_blocks)):
+    story_category = story_blocks[i].find_all(class_ = "story-block__category")[0].text.replace(' ','')
+    story_category_list.append(story_category)
+
+    story_heading = story_blocks[i].find_all(class_ = "story-block__heading")[0].text
+    story_heading_list.append(story_heading)
+
+    story_summary = story_blocks[i].find_all(class_ = "story-block__standfirst")[0].text
+    story_summary_list.append(story_summary)
+
+  d_dict = {'category': story_category_list, 'heading': story_heading_list, 'summary': story_summary_list, 'extract_ts': run_ts}
+  df = pd.DataFrame(d_dict).drop_duplicates()
+  
+  return df
+
+
+### function to scrape The Australian website (homepage, dataroom, and trading day section) ----
+def aus_scraper(homepage_url, dataroom_url, trading_day_url, run_ts):
+  # extract homepage headlines
+  response_hp = requests.get(homepage_url, headers={'User-Agent': 'Mozilla/5.0'}).content
+  html_hp = BeautifulSoup(response_hp, 'lxml')
+
+  story_blocks_hp = html_hp.find_all(class_ = "story-block")
+
+  story_category_hp_list = []
+  story_heading_hp_list = []
+
+  for i in range(0, len(story_blocks_hp)):
+    try:
+      story_category_hp = story_blocks_hp[i].find_all(class_ = "story-block__kicker")[0].text.replace(' ','')
+    except:
+      story_category_hp = ''
+    story_category_hp_list.append(story_category_hp)
+
+    try:
+      story_heading_hp = story_blocks_hp[i].findAll('h3', {'class': 'story-block__heading'})[0].text
+    except:
+      story_heading_hp = ''
+    story_heading_hp_list.append(story_heading_hp)
+
+
+  d_aus_homepage = {'category': story_category_hp_list, 'heading': story_heading_hp_list, 'extract_ts': run_ts}
+  
+  df_aus_homepage = pd.DataFrame(d_aus_homepage).drop_duplicates()
+  df_aus_dataroom = australian_section_scrapper(dataroom_url, run_ts)
+  df_aus_tradingday = australian_section_scrapper(trading_day_url, run_ts)
+
+  return df_aus_homepage, df_aus_dataroom, df_aus_tradingday

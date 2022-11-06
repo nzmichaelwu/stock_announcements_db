@@ -1,6 +1,11 @@
 urls:
   hotcopper: https://hotcopper.com.au/announcements/asx/
   marketindex: https://www.marketindex.com.au/asx-listed-companies
+  afr_homepage: https://www.afr.com/
+  afr_street_talk: https://www.afr.com/street-talk
+  aus_homepage: https://www.theaustralian.com.au/
+  aus_dataroom: https://www.theaustralian.com.au/business/dataroom
+  aus_tradingday: https://www.theaustralian.com.au/business/trading-day
 
 db:
   user: root
