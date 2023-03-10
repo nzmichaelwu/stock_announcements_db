@@ -8,8 +8,8 @@ urls:
   aus_tradingday: https://www.theaustralian.com.au/business/trading-day
 
 db:
-  user: root
-  password: Allblackscup_01
-  host: stock-rds-db.ck01jddttrnr.ap-southeast-2.rds.amazonaws.com
+  user: hrfswjuuruvuop
+  password: 388836f9415afc6d66307027abac03b06129a7fc58e4fe6bf5da1ef62400dcba
+  host: ec2-54-165-184-219.compute-1.amazonaws.com
   port: 5432
-  name: stock_announcement_db
+  name: dc9coa5oigpjt1
