@@ -255,6 +255,6 @@ def aus_scraper(homepage_url, trading_day_url, run_ts):
 
     df_aus_homepage = pd.DataFrame(d_aus_homepage).drop_duplicates()
     # df_aus_dataroom = australian_section_scrapper(dataroom_url, run_ts)
-    df_aus_tradingday = australian_section_scrapper(trading_day_url, run_ts)
+    # df_aus_tradingday = australian_section_scrapper(trading_day_url, run_ts)
 
-    return df_aus_homepage, df_aus_tradingday
+    return df_aus_homepage
