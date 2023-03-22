@@ -17,6 +17,7 @@ DATABASE_URL = (
     + str(cfg.db.port)
     + "/"
     + cfg.db.name
+    + "?sslmode=require"
 )
 
 # Connect to database

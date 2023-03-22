@@ -8,8 +8,8 @@ urls:
   aus_tradingday: https://www.theaustralian.com.au/business/trading-day
 
 db:
-  user: hrfswjuuruvuop
-  password: 388836f9415afc6d66307027abac03b06129a7fc58e4fe6bf5da1ef62400dcba
-  host: ec2-54-165-184-219.compute-1.amazonaws.com
-  port: 5432
-  name: dc9coa5oigpjt1
+  user: doadmin
+  password: AVNS_93AZAKgiJVU7aJEccYd
+  host: stock-announcement-db-do-user-13808930-0.b.db.ondigitalocean.com
+  port: 25060
+  name: defaultdb

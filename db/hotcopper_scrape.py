@@ -29,6 +29,7 @@ DATABASE_URL = (
     + str(cfg.db.port)
     + "/"
     + cfg.db.name
+    + "?sslmode=require"
 )
 
 # get hotcopper news headlines

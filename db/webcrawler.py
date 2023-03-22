@@ -214,7 +214,7 @@ def australian_section_scrapper(url, run_ts):
 
 
 ### function to scrape The Australian website (homepage, dataroom, and trading day section) ----
-def aus_scraper(homepage_url, trading_day_url, run_ts):
+def aus_scraper(homepage_url, dataroom_url, trading_day_url, run_ts):
     # extract homepage headlines
     response_hp = requests.get(
         homepage_url, headers={"User-Agent": "Mozilla/5.0"}
@@ -254,7 +254,7 @@ def aus_scraper(homepage_url, trading_day_url, run_ts):
     }
 
     df_aus_homepage = pd.DataFrame(d_aus_homepage).drop_duplicates()
-    # df_aus_dataroom = australian_section_scrapper(dataroom_url, run_ts)
-    # df_aus_tradingday = australian_section_scrapper(trading_day_url, run_ts)
+    df_aus_dataroom = australian_section_scrapper(dataroom_url, run_ts)
+    df_aus_tradingday = australian_section_scrapper(trading_day_url, run_ts)
 
-    return df_aus_homepage
+    return df_aus_homepage, df_aus_dataroom, df_aus_tradingday

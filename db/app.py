@@ -25,6 +25,7 @@ DATABASE_URL = (
     + str(cfg.db.port)
     + "/"
     + cfg.db.name
+    + "?sslmode=require"
 )
 postgresql_engine = create_engine(DATABASE_URL)
 
