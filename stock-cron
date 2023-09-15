@@ -1,16 +1,16 @@
-# hotcopper - weekday 8am to 4pm (every minute):
-* 8-15 * * 1-5 date >> /var/log/cron.log 2>&1
-* 8-15 * * 1-5 echo "Executing hotcopper_scrape.py..." >> /var/log/cron.log 2>&1
-* 8-15 * * 1-5 /usr/local/bin/python /opt/db/hotcopper_scrape.py >> /var/log/cron.log 2>&1
-* 8-15 * * 1-5 echo "hotcopper_scrape.py completed..." >> /var/log/cron.log 2>&1
+# hotcopper - weekday 8am to 5pm (every minute):
+* 8-16 * * 1-5 date >> /var/log/cron.log 2>&1
+* 8-16 * * 1-5 echo "Executing hotcopper_scrape.py..." >> /var/log/cron.log 2>&1
+* 8-16 * * 1-5 /usr/local/bin/python /opt/db/hotcopper_scrape.py >> /var/log/cron.log 2>&1
+* 8-16 * * 1-5 echo "hotcopper_scrape.py completed..." >> /var/log/cron.log 2>&1
 
-# hotcopper - weekday 8am to 4pm (every minute) - offset by 30 seconds:
-* 8-15 * * 1-5 ( sleep 30 ; date >> /var/log/cron.log 2>&1 )
-* 8-15 * * 1-5 ( sleep 30 ; echo "Executing hotcopper_scrape.py..." >> /var/log/cron.log 2>&1 )
-* 8-15 * * 1-5 ( sleep 30 ; /usr/local/bin/python /opt/db/hotcopper_scrape.py >> /var/log/cron.log 2>&1 )
-* 8-15 * * 1-5 ( sleep 30 ; echo "hotcopper_scrape.py completed..." >> /var/log/cron.log 2>&1 )
+# hotcopper - weekday 8am to 5pm (every minute) - offset by 30 seconds:
+* 8-16 * * 1-5 ( sleep 30 ; date >> /var/log/cron.log 2>&1 )
+* 8-16 * * 1-5 ( sleep 30 ; echo "Executing hotcopper_scrape.py..." >> /var/log/cron.log 2>&1 )
+* 8-16 * * 1-5 ( sleep 30 ; /usr/local/bin/python /opt/db/hotcopper_scrape.py >> /var/log/cron.log 2>&1 )
+* 8-16 * * 1-5 ( sleep 30 ; echo "hotcopper_scrape.py completed..." >> /var/log/cron.log 2>&1 )
 
-# hotcopper - Monday to Thursday after 4pm once before midnight (11:30pm)
+# hotcopper - Monday to Thursday after 5pm once before midnight (11:30pm)
 30 23 * * 1-4 date >> /var/log/cron.log 2>&1
 30 23 * * 1-4 echo "Executing hotcopper_scrape.py..." >> /var/log/cron.log 2>&1
 30 23 * * 1-4 /usr/local/bin/python /opt/db/hotcopper_scrape.py >> /var/log/cron.log 2>&1
@@ -22,19 +22,19 @@
 50 23 * * 1-5 /usr/local/bin/python /opt/db/marketindex_scrape.py >> /var/log/cron.log 2>&1
 50 23 * * 1-5 echo "marketindex.py completed..." >> /var/log/cron.log 2>&1
 
-# afr and the australian - weekday 9am to 4pm (every minute):
-* 9-15 * * 1-5 date >> /var/log/cron.log 2>&1
-* 9-15 * * 1-5 echo "Executing afr_scrape.py and aus_scrape.py..." >> /var/log/cron.log 2>&1
-* 9-15 * * 1-5 /usr/local/bin/python /opt/db/afr_scrape.py >> /var/log/cron.log 2>&1
-* 9-15 * * 1-5 /usr/local/bin/python /opt/db/aus_scrape.py >> /var/log/cron.log 2>&1
-* 9-15 * * 1-5 echo "afr_scrape.py and aus_scrape.py completed..." >> /var/log/cron.log 2>&1
+# afr and the australian - weekday 9am to 5pm (every minute):
+* 9-16 * * 1-5 date >> /var/log/cron.log 2>&1
+* 9-16 * * 1-5 echo "Executing afr_scrape.py and aus_scrape.py..." >> /var/log/cron.log 2>&1
+* 9-16 * * 1-5 /usr/local/bin/python /opt/db/afr_scrape.py >> /var/log/cron.log 2>&1
+* 9-16 * * 1-5 /usr/local/bin/python /opt/db/aus_scrape.py >> /var/log/cron.log 2>&1
+* 9-16 * * 1-5 echo "afr_scrape.py and aus_scrape.py completed..." >> /var/log/cron.log 2>&1
 
-# afr and the australian - weekday 9am to 4pm (every minute) - offset by 30 seconds:
-* 9-15 * * 1-5 ( sleep 30 ; date >> /var/log/cron.log 2>&1 )
-* 9-15 * * 1-5 ( sleep 30 ; echo "Executing afr_scrape.py and aus_scrape.py..." >> /var/log/cron.log 2>&1 )
-* 9-15 * * 1-5 ( sleep 30 ; /usr/local/bin/python /opt/db/afr_scrape.py >> /var/log/cron.log 2>&1 )
-* 9-15 * * 1-5 ( sleep 30 ; /usr/local/bin/python /opt/db/aus_scrape.py >> /var/log/cron.log 2>&1 )
-* 9-15 * * 1-5 ( sleep 30 ; echo "afr_scrape.py and aus_scrape.py completed..." >> /var/log/cron.log 2>&1 )
+# afr and the australian - weekday 9am to 5pm (every minute) - offset by 30 seconds:
+* 9-16 * * 1-5 ( sleep 30 ; date >> /var/log/cron.log 2>&1 )
+* 9-16 * * 1-5 ( sleep 30 ; echo "Executing afr_scrape.py and aus_scrape.py..." >> /var/log/cron.log 2>&1 )
+* 9-16 * * 1-5 ( sleep 30 ; /usr/local/bin/python /opt/db/afr_scrape.py >> /var/log/cron.log 2>&1 )
+* 9-16 * * 1-5 ( sleep 30 ; /usr/local/bin/python /opt/db/aus_scrape.py >> /var/log/cron.log 2>&1 )
+* 9-16 * * 1-5 ( sleep 30 ; echo "afr_scrape.py and aus_scrape.py completed..." >> /var/log/cron.log 2>&1 )
 
 # truncate tables every 3 days on weekday
 00 23 * * 1-5 date >> /var/log/cron.log 2>&1
